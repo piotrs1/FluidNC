@@ -2,10 +2,10 @@ board: None
 name: Default (Test Drive no I/O)
 meta:
 stepping:
-  engine: RMT
+  engine: I2S_STATIC
   idle_ms: 255
   pulse_us: 4
-  dir_delay_us: 0
+  dir_delay_us: 10
   disable_delay_us: 0
   segments: 12
 
@@ -46,7 +46,10 @@ axes:
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 1.000000
-      null_motor:
+      standard_stepper:
+        step_pin: I2SO.2
+        direction_pin: I2SO.1
+        disable_pin: I2SO.0
 
   y:
     steps_per_mm: 80.000000
@@ -60,7 +63,10 @@ axes:
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 1.000000
-      null_motor:
+      standard_stepper:
+        step_pin: I2SO.5
+        direction_pin: I2SO.4
+        disable_pin: I2SO.7
 
   z:
     steps_per_mm: 80.000000
@@ -74,7 +80,10 @@ axes:
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 1.000000
-      null_motor:
+      standard_stepper:
+        step_pin: I2SO.10
+        direction_pin: I2SO.9
+        disable_pin: I2SO.8
 
 control:
   safety_door_pin: NO_PIN
