@@ -1,5 +1,5 @@
-board: None
-name: Default (Test Drive no I/O)
+board: PibotV4.7B
+name: CNCTemp
 meta:
 stepping:
   engine: I2S_STATIC
@@ -46,10 +46,14 @@ axes:
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 1.000000
+#      standard_stepper:
+#        step_pin: I2SO.2
+#        direction_pin: I2SO.1
+#        disable_pin: I2SO.0:low
       standard_stepper:
-        step_pin: I2SO.2
-        direction_pin: I2SO.1
-        disable_pin: I2SO.0
+        step_pin: I2SO.13
+        direction_pin: I2SO.12
+        disable_pin: I2SO.15:low
 
   y:
     steps_per_mm: 80.000000
@@ -63,10 +67,14 @@ axes:
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 1.000000
+#      standard_stepper:
+#        step_pin: I2SO.5
+#        direction_pin: I2SO.4
+#        disable_pin: I2SO.7:low
       standard_stepper:
-        step_pin: I2SO.5
-        direction_pin: I2SO.4
-        disable_pin: I2SO.7
+        step_pin: I2SO.18
+        direction_pin: I2SO.17
+        disable_pin: I2SO.16:low
 
   z:
     steps_per_mm: 80.000000
@@ -80,10 +88,14 @@ axes:
       limit_all_pin: NO_PIN
       hard_limits: false
       pulloff_mm: 1.000000
+#      standard_stepper:
+#        step_pin: I2SO.10
+#        direction_pin: I2SO.9
+#        disable_pin: I2SO.8:low
       standard_stepper:
-        step_pin: I2SO.10
-        direction_pin: I2SO.9
-        disable_pin: I2SO.8
+        step_pin: I2SO.21
+        direction_pin: I2SO.20
+        disable_pin: I2SO.23:low
 
 control:
   safety_door_pin: NO_PIN
