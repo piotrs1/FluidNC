@@ -35,7 +35,7 @@ axes:
   shared_stepper_reset_pin: NO_PIN
   homing_runs: 2
   x:
-    steps_per_mm: 80.000000
+    steps_per_mm: 640.000000
     max_rate_mm_per_min: 1000.000000
     acceleration_mm_per_sec2: 25.000000
     max_travel_mm: 1000.000000
@@ -53,7 +53,7 @@ axes:
       standard_stepper:
         step_pin: I2SO.13
         direction_pin: I2SO.12
-        disable_pin: I2SO.15:low
+        disable_pin: I2SO.15
 
   y:
     steps_per_mm: 80.000000
