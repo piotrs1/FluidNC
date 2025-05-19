@@ -62,10 +62,12 @@ axes:
     max_travel_mm: 350.000000
     soft_limits: false
     motor0:
-      limit_neg_pin: gpio.2:low
+      limit_neg_pin: NO_PIN
+      #limit_neg_pin: gpio.2:low
       limit_pos_pin: NO_PIN
       limit_all_pin: NO_PIN
-      hard_limits: true
+      #hard_limits: true
+      hard_limits: false
       pulloff_mm: 1.000000
 #      standard_stepper:
 #        step_pin: I2SO.2
