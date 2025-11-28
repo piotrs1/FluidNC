@@ -29,7 +29,17 @@ i2so:
 # display end
 
 # airedale
+uart2:
+  txd_pin: gpio.25
+  rxd_pin: gpio.27
+  baud: 1000000
+  mode: 8N1
+  passthrough_baud: 57600
+  passthrough_mode: 8E1
 
+uart_channel2:
+  report_interval_ms: 0
+  uart_num: 2
 
 # airedale end
 
@@ -182,14 +192,14 @@ user_outputs:
   analog1_hz: 5000
   analog2_hz: 5000
   analog3_hz: 5000
-  digital0_pin: NO_PIN
-  digital1_pin: NO_PIN
-  digital2_pin: NO_PIN
-  digital3_pin: NO_PIN
-  digital4_pin: NO_PIN
-  digital5_pin: NO_PIN
-  digital6_pin: NO_PIN
-  digital7_pin: NO_PIN
+  digital0_pin: uart_channel2.8
+  digital1_pin: uart_channel2.9
+  digital2_pin: uart_channel2.10
+  digital3_pin: uart_channel2.11
+  digital4_pin: uart_channel2.12
+  digital5_pin: uart_channel2.13
+  digital6_pin: uart_channel2.14
+  digital7_pin: uart_channel2.15
 
 user_inputs:
   analog0_pin: NO_PIN
@@ -212,3 +222,5 @@ report_inches: false
 enable_parking_override_control: false
 use_line_numbers: false
 planner_blocks: 16
+
+
