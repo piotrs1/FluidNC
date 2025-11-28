@@ -18,7 +18,6 @@ i2so:
 i2c0:
    sda_pin: gpio.25
    scl_pin: gpio.27
-   frequency: 100000
 
 oled:
    i2c_num: 0
