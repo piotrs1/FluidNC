@@ -1,0 +1,18 @@
+6 krancowki
+1 alarm wspolny
+1 czujnik
+
+
+
+6 pin pozostale
+
+3 pin silnik
+
+3 pin inne
+
+1 pin zrasacz
+1 pin pompa silnika chlodzacego lub ze sterownika sterowanie
+
+
+
+2 pin i2c np wyswietlacz
