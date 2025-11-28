@@ -15,18 +15,23 @@ i2so:
   ws_pin: gpio.17
 
 # display
-i2c0:
-   sda_pin: gpio.25
-   scl_pin: gpio.27
-   frequency: 100000
+#i2c0:
+#   sda_pin: gpio.25
+#   scl_pin: gpio.27
+#   frequency: 100000
 
-oled:
-   i2c_num: 0
-   i2c_address: 60
-   width: 128
-   height: 64
-   radio_delay_ms: 1000
+#oled:
+#   i2c_num: 0
+#   i2c_address: 60
+#   width: 128
+#   height: 64
+#   radio_delay_ms: 1000
 # display end
+
+# airedale
+
+
+# airedale end
 
 spi:
   miso_pin: gpio.19
