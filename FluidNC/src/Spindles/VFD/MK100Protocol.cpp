@@ -44,8 +44,8 @@ namespace Spindles {
             
             data.tx_length = 6;
             data.rx_length = 6;
-            _maxRPM = 24000;
-            uint16_t speed = (uint32_t(dev_speed) * 10000L) / uint32_t(_maxRPM);
+            uint16_t maxRPM = 4000;
+            uint16_t speed = (uint32_t(dev_speed) * 10000L) / uint32_t(maxRPM);
             if (speed > 10000) {
                 speed = 10000;
             }
@@ -76,9 +76,10 @@ namespace Spindles {
                     if (vfd->_speeds.size() == 0) {
                         vfd->shelfSpeeds(0, maxRPM);
                     }
-
-                    vfd->setupSpeeds(maxRPM);  // The speed is given directly in RPM
-                    vfd->_slop = 300;          // 300 RPM
+                    uint16_t _maxFrequency = 4000;
+                    //vfd->setupSpeeds(4000);  // The speed is given directly in RPM
+                    vfd->setupSpeeds(_maxFrequency);
+                    vfd->_slop = std::max(_maxFrequency / 40, 1);
 
                     log_info("MK100 spindle initialized  done");
 
@@ -104,6 +105,7 @@ namespace Spindles {
             return [](const uint8_t* response, VFDSpindle* vfd, VFDProtocol* detail) -> bool {
                 vfd->_sync_dev_speed = (uint16_t(response[3]) << 8) | uint16_t(response[4]);
                 log_info("MK100 get speed: " << vfd->_sync_dev_speed);
+                xQueueSend(VFD::VFDProtocol::vfd_speed_queue, &vfd->_sync_dev_speed, 0);
                 return true;
             };
         }
