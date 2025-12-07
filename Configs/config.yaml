@@ -15,23 +15,26 @@ i2so:
   ws_pin: gpio.17
 
 # display
-#i2c0:
-#   sda_pin: gpio.25
-#   scl_pin: gpio.27
-#   frequency: 100000
+i2c0:
+   sda_pin: gpio.25
+   scl_pin: gpio.27
+   frequency: 100000
 
-#oled:
-#   i2c_num: 0
-#   i2c_address: 60
-#   width: 128
-#   height: 64
-#   radio_delay_ms: 1000
+oled:
+   i2c_num: 0
+   i2c_address: 60
+   width: 128
+   height: 64
+   radio_delay_ms: 5000
 # display end
 
 # airedale
 uart2:
-  txd_pin: gpio.25
-  rxd_pin: gpio.27
+  #txd_pin: gpio.25
+  #rxd_pin: gpio.27
+  txd_pin: gpio.4 #gpio.25
+  rxd_pin: gpio.12 #gpio.27
+
   baud: 1000000
   mode: 8N1
   passthrough_baud: 57600
@@ -45,23 +48,23 @@ uart_channel2:
 
 
 # spindle
-uart1:
-  txd_pin: gpio.15
-  rxd_pin: gpio.16
-  rts_pin: gpio.14
-  baud: 9600
-  mode: 8N2
+#uart1:
+#  txd_pin: gpio.15
+#  rxd_pin: gpio.16
+#  rts_pin: gpio.14
+#  baud: 9600
+#  mode: 8N2
 
-MK100:
-  uart_num: 1
-  modbus_id: 1
-  tool_num: 0
+#MK100:
+#  uart_num: 1
+#  modbus_id: 1
+#  tool_num: 0
 #  speed_map: 0=0% 0=25% 6000=25% 24000=100%
-  off_on_alarm: false
-  retries: 3
-  debug: 2
-  spinup_ms: 20000
-  spindown_ms: 20000
+#  off_on_alarm: false
+#  retries: 3
+#  debug: 2
+#  spinup_ms: 20000
+#  spindown_ms: 20000
 ## endspindle
 
 
