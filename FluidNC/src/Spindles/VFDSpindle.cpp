@@ -143,14 +143,22 @@ namespace Spindles {
         int unchanged = 0;
 
         const int limit = 100;  // 10 sec / 100 ms
+<<<<<<< HEAD
 
         if (_debug > 1) {
+=======
+        _debug = 5;
+        if (_debug > 1 && _sync_dev_speed != UINT32_MAX) {
+>>>>>>> 39b47a36 (Spindle MK100)
             log_info("Syncing to " << int(dev_speed));
         }
-
+        log_info("All  " << int(minSpeedAllowed) << " - " << int(maxSpeedAllowed) << " ds " << dev_speed << " sync " << _sync_dev_speed);
         while ((_last_override_value == sys.spindle_speed_ovr()) &&  // skip if the override changes
                ((_sync_dev_speed < minSpeedAllowed || _sync_dev_speed > maxSpeedAllowed) && unchanged < limit)) {
+            log_info("All1  " << int(minSpeedAllowed) << " - " << int(maxSpeedAllowed) << " ds " << dev_speed << " sync " << _sync_dev_speed);
             if (!xQueueReceive(VFD::VFDProtocol::vfd_speed_queue, &_sync_dev_speed, 3000)) {
+                log_info("All2  " << int(minSpeedAllowed) << " - " << int(maxSpeedAllowed) << " ds " << dev_speed << " sync " << _sync_dev_speed);
+
                 mc_critical(ExecAlarm::SpindleControl);
                 log_error(name() << ": spindle did not reach device units " << dev_speed << ". Reported value is " << _sync_dev_speed);
                 _syncing = false;
