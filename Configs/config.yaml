@@ -48,24 +48,24 @@ uart_channel2:
 
 
 # spindle
-#uart1:
-#  txd_pin: gpio.15
-#  rxd_pin: gpio.16
-#  rts_pin: gpio.14
-#  baud: 9600
-#  mode: 8N2
+uart1:
+  txd_pin: gpio.15
+  rxd_pin: gpio.16
+  rts_pin: gpio.14
+  baud: 9600
+  mode: 8N2
 
-#MK100:
-#  uart_num: 1
-#  modbus_id: 1
-#  tool_num: 0
-#  speed_map: 0=0% 0=25% 6000=25% 24000=100%
-#  off_on_alarm: false
-#  retries: 3
-#  debug: 2
-#  spinup_ms: 20000
-#  spindown_ms: 20000
-## endspindle
+MK100:
+  uart_num: 1
+  modbus_id: 1
+  tool_num: 0
+  #speed_map: 0=0% 0=25% 6000=25% 24000=100%
+  off_on_alarm: false
+  retries: 3
+  debug: 2
+  spinup_ms: 20000
+  spindown_ms: 20000
+# endspindle
 
 
 spi:
@@ -221,16 +221,24 @@ user_outputs:
   analog1_hz: 5000
   analog2_hz: 5000
   analog3_hz: 5000
-  digital0_pin: uart_channel2.8
-  digital1_pin: uart_channel2.9
-  digital2_pin: uart_channel2.10
-  digital3_pin: uart_channel2.11
-  digital4_pin: uart_channel2.12
-  digital5_pin: uart_channel2.13
+  digital0_pin: uart_channel2.15
+  digital1_pin: uart_channel2.14
+  digital2_pin: uart_channel2.13
+  digital3_pin: uart_channel2.12
+  digital4_pin: uart_channel2.11
+  digital5_pin: uart_channel2.10
+  digital6_pin: NO_PIN
+  digital7_pin: NO_PIN
+  #digital0_pin: uart_channel2.8
+  #digital1_pin: uart_channel2.9
+  #digital2_pin: uart_channel2.10
+  #digital3_pin: uart_channel2.11
+  #digital4_pin: uart_channel2.12
+  #digital5_pin: uart_channel2.13
   #digital6_pin: uart_channel2.14
   #digital7_pin: uart_channel2.15
-  digital6_pin: uart_channel2.16
-  digital7_pin: uart_channel2.17
+  #digital6_pin: uart_channel2.16
+  #digital7_pin: uart_channel2.17
 
 user_inputs:
   analog0_pin: NO_PIN
