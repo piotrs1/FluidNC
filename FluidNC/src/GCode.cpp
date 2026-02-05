@@ -1782,7 +1782,7 @@ Error gc_execute_line(const char* input_line) {
             if (isWaitOnInputDigital) {
                 if (input_number > MaxUserDigitalPin) {
                     return std::nullopt;
-                } else if (input_number > MaxUserAnalogPin) {
+                } else if (input_number > MaxUserDigitalPin) {
                     return std::nullopt;
                 }
             }

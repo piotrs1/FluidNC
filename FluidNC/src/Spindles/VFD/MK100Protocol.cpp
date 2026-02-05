@@ -1,18 +1,5 @@
-// Copyright (c) 2020 -	Stefan de Bruijn
-// Use of this source code is governed by a GPLv3 license that can be found in the LICENSE file.
-
 /*
     MK100Spindle.cpp
-
-    This is for the new MK100 MK100 VFD based spindle via RS485 Modbus.
-
-                         WARNING!!!!
-    VFDs are very dangerous. They have high voltages and are very powerful
-    Remove power before changing bits.
-
-    The documentation is okay once you get how it works, but unfortunately
-    incomplete... See MK100Spindle.md for the remainder of the docs that I
-    managed to piece together.
 */
 
 #include "MK100Protocol.h"
@@ -22,7 +9,7 @@ namespace Spindles {
     namespace VFD {
         void MK100Protocol::direction_command(SpindleState mode, ModbusCommand& data) {
             log_info("MK100 mode " << (uint8_t)mode);
-            
+
             data.tx_length = 6;
             data.rx_length = 6;
 
@@ -41,7 +28,7 @@ namespace Spindles {
             // For the MK100 VFD, the speed is read directly units of RPM, unlike many
             // other VFDs where it is given in Hz times some scale factor.
             log_info("MK100 speed: " << dev_speed);
-            
+
             data.tx_length = 6;
             data.rx_length = 6;
             uint16_t maxRPM = 4000;
@@ -60,13 +47,13 @@ namespace Spindles {
         VFDProtocol::response_parser MK100Protocol::initialization_sequence(int index, ModbusCommand& data, VFDSpindle* vfd) {
             log_info("MK100 spindle initialization");
             //return nullptr;
-            
+
             if (index == -1) {
                 data.tx_length = 6;
                 data.rx_length = 6;
 
-                data.msg[1] = 0x06;  
-                data.msg[2] = 0xF0;  
+                data.msg[1] = 0x06;
+                data.msg[2] = 0xF0;
                 data.msg[3] = 0x02;
                 data.msg[4] = 0x00;
                 data.msg[5] = 0x02;
@@ -88,7 +75,7 @@ namespace Spindles {
             } else {
                 return nullptr;
             }
-            
+
         }
 
         VFDProtocol::response_parser MK100Protocol::get_current_speed(ModbusCommand& data) {
@@ -97,15 +84,15 @@ namespace Spindles {
 
             // Send: 01 03 1007 0001
             data.msg[1] = 0x03;  // READ
-            data.msg[2] = 0x10;  // 
+            data.msg[2] = 0x10;  //
             data.msg[3] = 0x07;
             data.msg[4] = 0x00;  // Read 1 values
             data.msg[5] = 0x01;
 
             return [](const uint8_t* response, VFDSpindle* vfd, VFDProtocol* detail) -> bool {
-                vfd->_sync_dev_speed = (uint16_t(response[3]) << 8) | uint16_t(response[4]);
-                log_info("MK100 get speed: " << vfd->_sync_dev_speed);
-                xQueueSend(VFD::VFDProtocol::vfd_speed_queue, &vfd->_sync_dev_speed, 0);
+            	uint32_t dev_speed = (uint16_t(response[3]) << 8) | uint16_t(response[4]);
+                log_info("MK100 get speed: " << dev_speed);
+                xQueueSend(VFD::VFDProtocol::vfd_speed_queue, &dev_speed, 0);
                 return true;
             };
         }
@@ -125,7 +112,7 @@ namespace Spindles {
             //                      ----- status
 
             // TODO: What are we going to do with this? Update vfd state?
-            return [](const uint8_t* response, VFDSpindle* vfd, VFDProtocol* detail) -> bool { 
+            return [](const uint8_t* response, VFDSpindle* vfd, VFDProtocol* detail) -> bool {
                 uint16_t state = (uint16_t(response[3]) << 8) | uint16_t(response[4]);
                 log_info("MK100 get direction: " << state);
                 return true;

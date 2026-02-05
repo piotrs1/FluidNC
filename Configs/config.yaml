@@ -109,6 +109,9 @@ axes:
         direction_pin: I2SO.17:low
         disable_pin: I2SO.16
 
+# y info
+# uart_channel2.6:low - hss60 error indicator
+
   y:
     steps_per_mm: 640.000000
     max_rate_mm_per_min: 1000.000000
@@ -174,7 +177,7 @@ control:
   macro1_pin: NO_PIN
   macro2_pin: NO_PIN
   macro3_pin: NO_PIN
-  fault_pin: NO_PIN
+  fault_pin: uart_channel2.6:low
   estop_pin: NO_PIN
 
 coolant:
@@ -245,14 +248,15 @@ user_inputs:
   analog1_pin: NO_PIN
   analog2_pin: NO_PIN
   analog3_pin: NO_PIN
-  digital0_pin: uart_channel2.0
-  digital1_pin: uart_channel2.1
-  digital2_pin: uart_channel2.2
-  digital3_pin: uart_channel2.3
-  digital4_pin: uart_channel2.4
-  digital5_pin: uart_channel2.5
-  digital6_pin: uart_channel2.6
-  digital7_pin: uart_channel2.7
+  digital0_pin: uart_channel2.0:low
+  digital1_pin: uart_channel2.1:low
+  digital2_pin: uart_channel2.2:low
+  digital3_pin: uart_channel2.3:low
+  digital4_pin: uart_channel2.4:low
+  digital5_pin: uart_channel2.5:low
+  #digital6_pin: uart_channel2.6:low
+  digital6_pin: NO_PIN
+  digital7_pin: uart_channel2.7:low
 
 arc_tolerance_mm: 0.002000
 junction_deviation_mm: 0.010000
