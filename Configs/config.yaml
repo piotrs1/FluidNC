@@ -100,14 +100,14 @@ axes:
       hard_limits: true
       #hard_limits: false
       pulloff_mm: 1.000000
-      standard_stepper:
-        step_pin: I2SO.5
-        direction_pin: I2SO.4:low
-        disable_pin: I2SO.7
 #      standard_stepper:
-#        step_pin: I2SO.18
-#        direction_pin: I2SO.17:low
-#        disable_pin: I2SO.16
+#        step_pin: I2SO.5
+#        direction_pin: I2SO.4:low
+#        disable_pin: I2SO.7
+      standard_stepper:
+        step_pin: I2SO.18
+        direction_pin: I2SO.17:low
+        disable_pin: I2SO.16
 
   y:
     steps_per_mm: 640.000000
@@ -122,14 +122,14 @@ axes:
       hard_limits: true
       #hard_limits: false
       pulloff_mm: 1.000000
-      standard_stepper:
-        step_pin: I2SO.2
-        direction_pin: I2SO.1:low
-        disable_pin: I2SO.0
 #      standard_stepper:
-#        step_pin: I2SO.13
-#        direction_pin: I2SO.12:low
-#        disable_pin: I2SO.15
+#        step_pin: I2SO.2
+#        direction_pin: I2SO.1:low
+#        disable_pin: I2SO.0
+      standard_stepper:
+        step_pin: I2SO.13
+        direction_pin: I2SO.12:low
+        disable_pin: I2SO.15
 
     homing:
       cycle: 2
@@ -156,14 +156,14 @@ axes:
       hard_limits: true
       #hard_limits: false
       pulloff_mm: 1.000000
-      standard_stepper:
-        step_pin: I2SO.10
-        direction_pin: I2SO.9:low
-        disable_pin: I2SO.8
 #      standard_stepper:
-#        step_pin: I2SO.21
-#        direction_pin: I2SO.20:low
-#        disable_pin: I2SO.23
+#        step_pin: I2SO.10
+#        direction_pin: I2SO.9:low
+#        disable_pin: I2SO.8
+      standard_stepper:
+        step_pin: I2SO.21
+        direction_pin: I2SO.20:low
+        disable_pin: I2SO.23
 
 control:
   safety_door_pin: NO_PIN
