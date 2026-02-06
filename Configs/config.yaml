@@ -92,10 +92,10 @@ axes:
     max_rate_mm_per_min: 1000.000000
     acceleration_mm_per_sec2: 25.000000
     max_travel_mm: 350.000000
-    soft_limits: false
+    soft_limits: true
     motor0:
-      limit_neg_pin: gpio.33:low:pu
-      limit_pos_pin: gpio.32:low:pu
+      limit_neg_pin: gpio.33:pu
+      limit_pos_pin: gpio.32:pu
       limit_all_pin: NO_PIN
       hard_limits: true
       pulloff_mm: 1.000000
@@ -116,10 +116,10 @@ axes:
     max_rate_mm_per_min: 1000.000000
     acceleration_mm_per_sec2: 25.000000
     max_travel_mm: 350.000000
-    soft_limits: false
+    soft_limits: true
     motor0:
-      limit_neg_pin: gpio.2:low:pu
-      limit_pos_pin: gpio.26:low:pu
+      limit_neg_pin: gpio.2:pu
+      limit_pos_pin: gpio.26:pu
       limit_all_pin: NO_PIN
       hard_limits: true
       pulloff_mm: 1.000000
@@ -149,11 +149,11 @@ axes:
     max_rate_mm_per_min: 1000.000000
     acceleration_mm_per_sec2: 25.000000
     max_travel_mm: 350.000000
-    soft_limits: false
+    soft_limits: true
     motor0:
       # no pull up
-      limit_neg_pin: gpio.35:low
-      limit_pos_pin: gpio.34:low
+      limit_neg_pin: gpio.35
+      limit_pos_pin: gpio.34
       limit_all_pin: NO_PIN
       hard_limits: true
       pulloff_mm: 1.000000
