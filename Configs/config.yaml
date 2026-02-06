@@ -30,8 +30,6 @@ oled:
 
 # airedale
 uart2:
-  #txd_pin: gpio.25
-  #rxd_pin: gpio.27
   txd_pin: gpio.4 #gpio.25
   rxd_pin: gpio.12 #gpio.27
 
@@ -43,7 +41,6 @@ uart2:
 uart_channel2:
   report_interval_ms: 0
   uart_num: 2
-
 # airedale end
 
 
@@ -87,18 +84,20 @@ axes:
   shared_stepper_disable_pin: NO_PIN
   shared_stepper_reset_pin: NO_PIN
   homing_runs: 2
+
+# x info
+# uart_channel2.5:low - hss60 error indicator
   x:
     steps_per_mm: 640.000000
     max_rate_mm_per_min: 1000.000000
     acceleration_mm_per_sec2: 25.000000
-    max_travel_mm: 1000.000000
+    max_travel_mm: 350.000000
     soft_limits: false
     motor0:
       limit_neg_pin: gpio.33:low:pu
       limit_pos_pin: gpio.32:low:pu
       limit_all_pin: NO_PIN
       hard_limits: true
-      #hard_limits: false
       pulloff_mm: 1.000000
 #      standard_stepper:
 #        step_pin: I2SO.5
@@ -119,11 +118,10 @@ axes:
     max_travel_mm: 350.000000
     soft_limits: false
     motor0:
-      limit_neg_pin: gpio.26:low:pu
-      limit_pos_pin: gpio.2:low:pu
+      limit_neg_pin: gpio.2:low:pu
+      limit_pos_pin: gpio.26:low:pu
       limit_all_pin: NO_PIN
       hard_limits: true
-      #hard_limits: false
       pulloff_mm: 1.000000
 #      standard_stepper:
 #        step_pin: I2SO.2
@@ -144,20 +142,20 @@ axes:
       seek_scaler: 1
       feed_scaler: 1
 
+# z info
+# uart_channel2.7:low - hss88 error indicator
   z:
     steps_per_mm: 640.000000
     max_rate_mm_per_min: 1000.000000
     acceleration_mm_per_sec2: 25.000000
-    max_travel_mm: 1000.000000
+    max_travel_mm: 350.000000
     soft_limits: false
     motor0:
-      #limit_neg_pin: gpio.35:low
-      #limit_pos_pin: gpio.34:low
-      limit_neg_pin: gpio.36:low
-      limit_pos_pin: gpio.39:low
+      # no pull up
+      limit_neg_pin: gpio.35:low
+      limit_pos_pin: gpio.34:low
       limit_all_pin: NO_PIN
       hard_limits: true
-      #hard_limits: false
       pulloff_mm: 1.000000
 #      standard_stepper:
 #        step_pin: I2SO.10
@@ -173,8 +171,8 @@ control:
   reset_pin: NO_PIN
   feed_hold_pin: NO_PIN
   cycle_start_pin: NO_PIN
-  macro0_pin: NO_PIN
-  macro1_pin: NO_PIN
+  macro0_pin: uart_channel2.5:low
+  macro1_pin: uart_channel2.7:low
   macro2_pin: NO_PIN
   macro3_pin: NO_PIN
   fault_pin: uart_channel2.6:low
@@ -186,18 +184,19 @@ coolant:
   delay_ms: 0
 
 probe:
-  pin: NO_PIN
-  toolsetter_pin: NO_PIN
+  # no pull up
+  pin: gpio.36:low
+  toolsetter_pin: gpio.39:low
   check_mode_start: true
   hard_stop: false
 
 macros:
   startup_line0:
   startup_line1:
-  Macro0:
-  Macro1:
-  Macro2:
-  Macro3:
+  macro0: $Alarm/Send=50
+  macro1: $Alarm/Send=51
+  macro2:
+  macro3:
   after_homing:
   after_reset:
   after_unlock:
@@ -248,15 +247,22 @@ user_inputs:
   analog1_pin: NO_PIN
   analog2_pin: NO_PIN
   analog3_pin: NO_PIN
-  digital0_pin: uart_channel2.0:low
-  digital1_pin: uart_channel2.1:low
-  digital2_pin: uart_channel2.2:low
-  digital3_pin: uart_channel2.3:low
-  digital4_pin: uart_channel2.4:low
-  digital5_pin: uart_channel2.5:low
+  #digital0_pin: uart_channel2.0:low
+  #digital1_pin: uart_channel2.1:low
+  #digital2_pin: uart_channel2.2:low
+  #digital3_pin: uart_channel2.3:low
+  #digital4_pin: uart_channel2.4:low
+  digital0_pin: NO_PIN
+  digital1_pin: NO_PIN
+  digital2_pin: NO_PIN
+  digital3_pin: NO_PIN
+  digital4_pin: NO_PIN
+  #digital5_pin: uart_channel2.5:low
+  digital5_pin: NO_PIN
   #digital6_pin: uart_channel2.6:low
   digital6_pin: NO_PIN
-  digital7_pin: uart_channel2.7:low
+  #digital7_pin: uart_channel2.7:low
+  digital7_pin: NO_PIN
 
 arc_tolerance_mm: 0.002000
 junction_deviation_mm: 0.010000
