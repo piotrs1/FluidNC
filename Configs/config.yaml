@@ -123,9 +123,13 @@ axes:
 
   y:
     steps_per_mm: 640.000000
-    max_rate_mm_per_min: 3000.000000
-    acceleration_mm_per_sec2: 25.000000
-    max_travel_mm: 370.000000
+    # ai max_rate: 3000–4000 mm/min
+    # max_rate_mm_per_min: 3000.000000
+    max_rate_mm_per_min: 4000.000000
+    # ai acceleration_mm_per_sec2: 300–500
+    # acceleration_mm_per_sec2: 25.000000
+    acceleration_mm_per_sec2: 100.000000
+    max_travel_mm: 352.000000
     soft_limits: true
     motor0:
       limit_neg_pin: gpio.2:pu
@@ -147,7 +151,10 @@ axes:
       allow_single_axis: true
       positive_direction: true
       mpos_mm: 0.000
-      seek_mm_per_min: 200
+      # ai fast_feedrate: 600
+      # seek_mm_per_min: 200
+      seek_mm_per_min: 400
+      # ai slow_feedrate: 100
       feed_mm_per_min: 50
       seek_scaler: 1
       feed_scaler: 1
