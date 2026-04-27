@@ -91,7 +91,7 @@ axes:
     steps_per_mm: 640.000000
     max_rate_mm_per_min: 4000.000000
     acceleration_mm_per_sec2: 100.000000
-    max_travel_mm: 520.000000
+    max_travel_mm: 515.000000
     soft_limits: true
     motor0:
       limit_neg_pin: gpio.33:pu
@@ -105,13 +105,13 @@ axes:
 #        disable_pin: I2SO.7
       standard_stepper:
         step_pin: I2SO.18
-        direction_pin: I2SO.17:low
+        direction_pin: I2SO.17
         disable_pin: I2SO.16
 
     homing:
       cycle: 2
       allow_single_axis: true
-      positive_direction: true
+      positive_direction: false
       mpos_mm: 0.000
       seek_mm_per_min: 400
       feed_mm_per_min: 50
