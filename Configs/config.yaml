@@ -89,13 +89,13 @@ axes:
 # uart_channel2.5:low - hss60 error indicator
   x:
     steps_per_mm: 640.000000
-    max_rate_mm_per_min: 3000.000000
-    acceleration_mm_per_sec2: 25.000000
-    max_travel_mm: 370.000000
+    max_rate_mm_per_min: 4000.000000
+    acceleration_mm_per_sec2: 100.000000
+    max_travel_mm: 520.000000
     soft_limits: true
     motor0:
-      limit_neg_pin: gpio.33:low:pu
-      limit_pos_pin: gpio.32:low:pu
+      limit_neg_pin: gpio.33:pu
+      limit_pos_pin: gpio.32:pu
       limit_all_pin: NO_PIN
       hard_limits: true
       pulloff_mm: 1.000000
@@ -113,7 +113,7 @@ axes:
       allow_single_axis: true
       positive_direction: true
       mpos_mm: 0.000
-      seek_mm_per_min: 200
+      seek_mm_per_min: 400
       feed_mm_per_min: 50
       seek_scaler: 1
       feed_scaler: 1
