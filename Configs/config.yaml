@@ -94,8 +94,8 @@ axes:
     max_travel_mm: 515.000000
     soft_limits: true
     motor0:
-      limit_neg_pin: gpio.33:pu
-      limit_pos_pin: gpio.32:pu
+      limit_neg_pin: gpio.32:pu
+      limit_pos_pin: gpio.33:pu
       limit_all_pin: NO_PIN
       hard_limits: true
       pulloff_mm: 1.000000
@@ -132,8 +132,8 @@ axes:
     max_travel_mm: 352.000000
     soft_limits: true
     motor0:
-      limit_neg_pin: gpio.2:pu
-      limit_pos_pin: gpio.26:pu
+      limit_neg_pin: gpio.26:pu
+      limit_pos_pin: gpio.2:pu
       limit_all_pin: NO_PIN
       hard_limits: true
       pulloff_mm: 1.000000
@@ -143,13 +143,13 @@ axes:
 #        disable_pin: I2SO.0
       standard_stepper:
         step_pin: I2SO.13
-        direction_pin: I2SO.12:low
+        direction_pin: I2SO.12
         disable_pin: I2SO.15
 
     homing:
       cycle: 2
       allow_single_axis: true
-      positive_direction: true
+      positive_direction: false
       mpos_mm: 0.000
       # ai fast_feedrate: 600
       # seek_mm_per_min: 200
